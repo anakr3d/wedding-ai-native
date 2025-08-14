@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sarah & Michael - Wedding</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <!-- Payment Status Alert -->
+    <div id="paymentAlert" class="payment-alert hidden">
+        <div class="alert-content">
+            <span id="alertIcon"></span>
+            <p id="alertMessage"></p>
+            <button id="closeAlert" class="close-alert">&times;</button>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-background"></div>
+        <div class="hero-content">
+            <div class="hero-heart">
+                <i data-lucide="heart"></i>
+            </div>
+            <h1 class="hero-title">Sarah & Michael</h1>
+            <p class="hero-date">June 15th, 2025</p>
+            <p class="hero-description">
+                Join us as we celebrate our love story and begin our journey as one. 
+                Your presence is the greatest gift, but your love and support mean the world to us.
+            </p>
+        </div>
+    </header>
+
+    <div class="main-container">
+        
+        <!-- Our Love Journey -->
+        <section class="section-card">
+            <div class="section-header">
+                <i data-lucide="heart"></i>
+                <h2>Our Love Journey</h2>
+            </div>
+            
+            <div class="timeline-container">
+                <div class="timeline-line"></div>
+                
+                <div class="timeline-milestone">
+                    <div class="timeline-icon">
+                        <i data-lucide="users"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <span class="timeline-date">March 2019</span>
+                            <h3>First Meeting</h3>
+                        </div>
+                        <p>We met at a coffee shop downtown. Sarah was reading a book, Michael was working on his laptop. A spilled latte brought us together.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-milestone">
+                    <div class="timeline-icon">
+                        <i data-lucide="heart"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <span class="timeline-date">July 2019</span>
+                            <h3>First Date</h3>
+                        </div>
+                        <p>Michael finally gathered the courage to ask Sarah out. We went to the local botanical garden and talked for hours among the roses.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-milestone">
+                    <div class="timeline-icon">
+                        <i data-lucide="map-pin"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <span class="timeline-date">December 2020</span>
+                            <h3>Moving In Together</h3>
+                        </div>
+                        <p>After a year and a half of dating, we decided to take the next step and move in together. Our first apartment was small but full of love.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-milestone">
+                    <div class="timeline-icon">
+                        <i data-lucide="heart"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <span class="timeline-date">August 2023</span>
+                            <h3>The Proposal</h3>
+                        </div>
+                        <p>Michael proposed during our vacation in the mountains, at the exact spot where we had our first kiss. Sarah couldn't stop crying happy tears.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-milestone">
+                    <div class="timeline-icon">
+                        <i data-lucide="calendar"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <span class="timeline-date">June 2025</span>
+                            <h3>Our Wedding Day</h3>
+                        </div>
+                        <p>Today, we become husband and wife, surrounded by all the people we love most. Our forever starts now.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Photo Gallery -->
+        <section class="section-card">
+            <div class="section-header">
+                <i data-lucide="camera"></i>
+                <h2>Our Memories</h2>
+            </div>
+            
+            <div class="gallery-container">
+                <div class="gallery-wrapper">
+                    <div class="gallery-image-container">
+                        <img id="galleryImage" src="" alt="" class="gallery-image">
+                        
+                        <button id="prevGallery" class="gallery-nav prev">
+                            <i data-lucide="chevron-left"></i>
+                        </button>
+                        
+                        <button id="nextGallery" class="gallery-nav next">
+                            <i data-lucide="chevron-right"></i>
+                        </button>
+                        
+                        <div class="gallery-overlay">
+                            <h3 id="galleryTitle"></h3>
+                            <p id="galleryCaption"></p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-controls">
+                        <button id="galleryPlayPause" class="gallery-play-pause">
+                            <i data-lucide="pause"></i>
+                            <span>Pause</span>
+                        </button>
+                        
+                        <div id="galleryDots" class="gallery-dots"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Music Player -->
+        <section class="section-card">
+            <div class="section-header">
+                <i data-lucide="music"></i>
+                <h2>Our Wedding Playlist</h2>
+            </div>
+            
+            <div class="music-player">
+                <div class="music-info">
+                    <h3 id="currentTrackTitle">Perfect</h3>
+                    <p id="currentTrackArtist">Ed Sheeran</p>
+                </div>
+                
+                <div class="music-controls">
+                    <button id="prevTrack" class="music-btn">
+                        <i data-lucide="skip-back"></i>
+                    </button>
+                    
+                    <button id="playPause" class="music-btn play-btn">
+                        <i data-lucide="play"></i>
+                    </button>
+                    
+                    <button id="nextTrack" class="music-btn">
+                        <i data-lucide="skip-forward"></i>
+                    </button>
+                </div>
+                
+                <div class="volume-control">
+                    <i data-lucide="volume-2"></i>
+                    <input type="range" id="volumeSlider" min="0" max="1" step="0.1" value="0.5">
+                </div>
+            </div>
+            
+            <audio id="audioPlayer" preload="none">
+                <source src="https://www.soundjay.com/buttons/sounds/button-09.wav" type="audio/wav">
+            </audio>
+        </section>
+
+        <!-- Wedding Gifts -->
+        <section class="section-card">
+            <div class="section-header">
+                <i data-lucide="gift"></i>
+                <h2>Wedding Gifts</h2>
+            </div>
+            
+            <div class="gift-content">
+                <p class="gift-description">
+                    Your presence at our wedding is the greatest gift. However, if you wish to honor us with a gift, 
+                    we would be grateful for your contribution to our future together.
+                </p>
+                
+                <button id="openGiftDialog" class="gift-button">
+                    <i data-lucide="qr-code"></i>
+                    Send Wedding Gift
+                </button>
+            </div>
+        </section>
+
+        <!-- Comments Section -->
+        <section class="section-card">
+            <div class="section-header">
+                <i data-lucide="message-circle"></i>
+                <h2>Guest Messages</h2>
+            </div>
+            
+            <!-- Add Comment Form -->
+            <form id="commentForm" class="comment-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="guestName">Your Name</label>
+                        <input type="text" id="guestName" placeholder="Enter your name" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="guestMessage">Your Message</label>
+                    <textarea id="guestMessage" placeholder="Share your wishes for the happy couple..." rows="4" required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">
+                    <span id="submitText">Send Message</span>
+                </button>
+            </form>
+            
+            <!-- Comments List -->
+            <div id="commentsList" class="comments-list">
+                <div class="empty-comments">
+                    <p>No messages yet. Be the first to leave a message for the happy couple!</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-heart">
+                <i data-lucide="heart"></i>
+            </div>
+            <h3>Thank You</h3>
+            <p>
+                We are so grateful for your love and support as we begin this new chapter together.
+            </p>
+            <p class="footer-copyright">
+                © 2025 Sarah & Michael's Wedding • Made with ❤️
+            </p>
+        </div>
+    </footer>
+
+    <!-- Gift Payment Modal -->
+    <div id="giftModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Send a Wedding Gift</h2>
+                <button id="closeModal" class="close-modal">&times;</button>
+            </div>
+            
+            <form id="giftForm" class="gift-form">
+                <div class="form-group">
+                    <label for="donorName">Your Name</label>
+                    <input type="text" id="donorName" placeholder="Enter your name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Choose Gift Amount</label>
+                    <div class="gift-packages">
+                        <button type="button" class="gift-package" data-package="small">
+                            <div class="package-name">Small Gift</div>
+                            <div class="package-amount">$25</div>
+                        </button>
+                        <button type="button" class="gift-package" data-package="medium">
+                            <div class="package-name">Medium Gift</div>
+                            <div class="package-amount">$50</div>
+                        </button>
+                        <button type="button" class="gift-package" data-package="large">
+                            <div class="package-name">Large Gift</div>
+                            <div class="package-amount">$100</div>
+                        </button>
+                        <button type="button" class="gift-package" data-package="custom">
+                            <div class="package-name">Custom Amount</div>
+                        </button>
+                    </div>
+                </div>
+                
+                <div id="customAmountGroup" class="form-group hidden">
+                    <label for="customAmount">Custom Amount ($)</label>
+                    <input type="number" id="customAmount" min="1" step="0.01" placeholder="Enter amount">
+                </div>
+                
+                <button type="submit" id="continuePayment" class="continue-payment" disabled>
+                    Continue to Payment
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
