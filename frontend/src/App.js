@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
-import { Heart, Music, MessageCircle, Gift, Play, Pause, SkipForward, SkipBack, Volume2, QrCode, Check, X } from 'lucide-react';
+import { Heart, Music, MessageCircle, Gift, Play, Pause, SkipForward, SkipBack, Volume2, QrCode, Check, X, ChevronLeft, ChevronRight, Camera, Calendar, MapPin, Users } from 'lucide-react';
 import { Button } from './components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from './components/ui/card';
 import { Input } from './components/ui/input';
