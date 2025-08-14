@@ -112,6 +112,13 @@ function App() {
     fetchComments();
     fetchGiftPackages();
     checkPaymentReturn();
+    startGallerySlideshow();
+    
+    return () => {
+      if (galleryIntervalRef.current) {
+        clearInterval(galleryIntervalRef.current);
+      }
+    };
   }, []);
 
   const fetchComments = async () => {
