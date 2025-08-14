@@ -28,6 +28,79 @@ function App() {
   const [volume, setVolume] = useState(0.5);
   const audioRef = useRef(null);
 
+  // Gallery state
+  const [currentGalleryImage, setCurrentGalleryImage] = useState(0);
+  const [isGalleryPlaying, setIsGalleryPlaying] = useState(true);
+  const galleryIntervalRef = useRef(null);
+
+  // Gallery images
+  const galleryImages = [
+    {
+      url: "https://images.unsplash.com/photo-1541385496969-a3edfa5a94ed?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NjZ8MHwxfHNlYXJjaHwxfHxyb21hbnRpYyUyMGNvdXBsZXxlbnwwfHx8fDE3NTUxNjI1MDV8MA&ixlib=rb-4.1.0&q=85",
+      title: "Our First Kiss",
+      caption: "The moment we knew we were meant to be"
+    },
+    {
+      url: "https://images.unsplash.com/photo-1591969851586-adbbd4accf81?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NjZ8MHwxfHNlYXJjaHwyfHxyb21hbnRpYyUyMGNvdXBsZXxlbnwwfHx8fDE3NTUxNjI1MDV8MA&ixlib=rb-4.1.0&q=85",
+      title: "Sunset Moments",
+      caption: "Watching sunsets together, dreaming of forever"
+    },
+    {
+      url: "https://images.unsplash.com/photo-1514480657081-a987d9a45e90?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NjZ8MHwxfHNlYXJjaHwzfHxyb21hbnRpYyUyMGNvdXBsZXxlbnwwfHx8fDE3NTUxNjI1MDV8MA&ixlib=rb-4.1.0&q=85",
+      title: "Morning Love",
+      caption: "Every morning with you feels like a blessing"
+    },
+    {
+      url: "https://images.unsplash.com/photo-1532712938310-34cb3982ef74?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzZ8MHwxfHNlYXJjaHwxfHx3ZWRkaW5nfGVufDB8fHx8MTc1NTE2MjUxMHww&ixlib=rb-4.1.0&q=85",
+      title: "Our Engagement",
+      caption: "She said yes! The beginning of our forever"
+    },
+    {
+      url: "https://images.unsplash.com/photo-1520854221256-17451cc331bf?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzZ8MHwxfHNlYXJjaHwyfHx3ZWRkaW5nfGVufDB8fHx8MTc1NTE2MjUxMHww&ixlib=rb-4.1.0&q=85",
+      title: "Hand in Hand",
+      caption: "Together we can conquer anything"
+    },
+    {
+      url: "https://images.unsplash.com/photo-1519741497674-611481863552?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzZ8MHwxfHNlYXJjaHwzfHx3ZWRkaW5nfGVufDB8fHx8MTc1NTE2MjUxMHww&ixlib=rb-4.1.0&q=85",
+      title: "Wedding Prep",
+      caption: "Getting ready for the most important day of our lives"
+    }
+  ];
+
+  // Love journey timeline
+  const loveJourney = [
+    {
+      date: "March 2019",
+      title: "First Meeting",
+      description: "We met at a coffee shop downtown. Sarah was reading a book, Michael was working on his laptop. A spilled latte brought us together.",
+      icon: Users
+    },
+    {
+      date: "July 2019",
+      title: "First Date",
+      description: "Michael finally gathered the courage to ask Sarah out. We went to the local botanical garden and talked for hours among the roses.",
+      icon: Heart
+    },
+    {
+      date: "December 2020",
+      title: "Moving In Together",
+      description: "After a year and a half of dating, we decided to take the next step and move in together. Our first apartment was small but full of love.",
+      icon: MapPin
+    },
+    {
+      date: "August 2023",
+      title: "The Proposal",
+      description: "Michael proposed during our vacation in the mountains, at the exact spot where we had our first kiss. Sarah couldn't stop crying happy tears.",
+      icon: Heart
+    },
+    {
+      date: "June 2025",
+      title: "Our Wedding Day",
+      description: "Today, we become husband and wife, surrounded by all the people we love most. Our forever starts now.",
+      icon: Calendar
+    }
+  ];
+
   // Wedding playlist
   const playlist = [
     { title: "Perfect", artist: "Ed Sheeran", src: "https://www.soundjay.com/buttons/sounds/button-09.wav" },
