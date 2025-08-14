@@ -338,6 +338,119 @@ function App() {
 
       <div className="max-w-6xl mx-auto px-4 py-12 space-y-16">
         
+        {/* Our Love Journey */}
+        <section className="bg-white/70 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-pink-100">
+          <div className="flex items-center justify-center mb-8">
+            <Heart className="w-8 h-8 text-pink-500 mr-3" />
+            <h2 className="text-3xl font-serif text-gray-800">Our Love Journey</h2>
+          </div>
+          
+          <div className="max-w-4xl mx-auto">
+            <div className="relative">
+              {/* Timeline line */}
+              <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-pink-300 to-rose-300"></div>
+              
+              <div className="space-y-12">
+                {loveJourney.map((milestone, index) => {
+                  const IconComponent = milestone.icon;
+                  return (
+                    <div key={index} className="relative flex items-start">
+                      {/* Timeline dot */}
+                      <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-pink-400 to-rose-400 rounded-full flex items-center justify-center shadow-lg z-10">
+                        <IconComponent className="w-8 h-8 text-white" />
+                      </div>
+                      
+                      {/* Content */}
+                      <div className="ml-8 bg-gradient-to-r from-pink-50 to-rose-50 rounded-2xl p-6 shadow-sm border border-pink-100 flex-1">
+                        <div className="flex items-center mb-3">
+                          <Badge variant="outline" className="text-pink-600 border-pink-200 mr-3">
+                            {milestone.date}
+                          </Badge>
+                          <h3 className="text-xl font-semibold text-gray-800">{milestone.title}</h3>
+                        </div>
+                        <p className="text-gray-700 leading-relaxed">{milestone.description}</p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Photo Gallery */}
+        <section className="bg-white/70 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-pink-100">
+          <div className="flex items-center justify-center mb-8">
+            <Camera className="w-8 h-8 text-pink-500 mr-3" />
+            <h2 className="text-3xl font-serif text-gray-800">Our Memories</h2>
+          </div>
+          
+          <div className="max-w-4xl mx-auto">
+            <div className="relative bg-gradient-to-br from-pink-50 to-rose-50 rounded-3xl p-6 shadow-inner">
+              {/* Main gallery image */}
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden mb-6 shadow-lg">
+                <img
+                  src={galleryImages[currentGalleryImage].url}
+                  alt={galleryImages[currentGalleryImage].title}
+                  className="w-full h-full object-cover transition-opacity duration-500"
+                />
+                
+                {/* Navigation arrows */}
+                <button
+                  onClick={prevGalleryImage}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:bg-white/90 transition-all"
+                >
+                  <ChevronLeft className="w-6 h-6 text-gray-700" />
+                </button>
+                
+                <button
+                  onClick={nextGalleryImage}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:bg-white/90 transition-all"
+                >
+                  <ChevronRight className="w-6 h-6 text-gray-700" />
+                </button>
+                
+                {/* Image overlay with title and caption */}
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-6">
+                  <h3 className="text-xl font-semibold text-white mb-2">
+                    {galleryImages[currentGalleryImage].title}
+                  </h3>
+                  <p className="text-white/90 text-sm">
+                    {galleryImages[currentGalleryImage].caption}
+                  </p>
+                </div>
+              </div>
+              
+              {/* Gallery controls */}
+              <div className="flex items-center justify-center space-x-6">
+                <Button
+                  onClick={toggleGallerySlideshow}
+                  variant="outline"
+                  className="rounded-full border-pink-200 hover:bg-pink-50"
+                >
+                  {isGalleryPlaying ? <Pause className="w-4 h-4 mr-2" /> : <Play className="w-4 h-4 mr-2" />}
+                  {isGalleryPlaying ? 'Pause' : 'Play'}
+                </Button>
+                
+                {/* Image dots */}
+                <div className="flex space-x-2">
+                  {galleryImages.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentGalleryImage(index)}
+                      className={`w-3 h-3 rounded-full transition-all ${
+                        index === currentGalleryImage
+                          ? 'bg-pink-500 scale-125'
+                          : 'bg-pink-200 hover:bg-pink-300'
+                      }`}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Music Player */}
         <section className="bg-white/70 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-pink-100">
           <div className="flex items-center justify-center mb-6">
