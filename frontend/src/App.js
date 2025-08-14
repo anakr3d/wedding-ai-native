@@ -226,7 +226,38 @@ function App() {
     setIsLoading(false);
   };
 
-  // Music player functions
+  // Gallery functions
+  const startGallerySlideshow = () => {
+    if (galleryIntervalRef.current) {
+      clearInterval(galleryIntervalRef.current);
+    }
+    if (isGalleryPlaying) {
+      galleryIntervalRef.current = setInterval(() => {
+        setCurrentGalleryImage((prev) => (prev + 1) % galleryImages.length);
+      }, 4000);
+    }
+  };
+
+  useEffect(() => {
+    startGallerySlideshow();
+    return () => {
+      if (galleryIntervalRef.current) {
+        clearInterval(galleryIntervalRef.current);
+      }
+    };
+  }, [isGalleryPlaying]);
+
+  const nextGalleryImage = () => {
+    setCurrentGalleryImage((prev) => (prev + 1) % galleryImages.length);
+  };
+
+  const prevGalleryImage = () => {
+    setCurrentGalleryImage((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
+  };
+
+  const toggleGallerySlideshow = () => {
+    setIsGalleryPlaying(!isGalleryPlaying);
+  };
   const togglePlay = () => {
     if (audioRef.current) {
       if (isPlaying) {
